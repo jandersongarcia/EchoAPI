@@ -5,14 +5,17 @@ namespace App\Controllers;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Medoo\Medoo;
+use Monolog\Logger;
 
 class AuthController
 {
     private $db;
+    private $logger;
 
-    public function __construct(Medoo $db)
+    public function __construct(Medoo $db, Logger $logger)
     {
         $this->db = $db;
+        $this->logger = $logger;
     }
 
     public function register(): Response
